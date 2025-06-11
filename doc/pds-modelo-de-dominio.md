@@ -94,9 +94,7 @@ El modelo de dominio representa los conceptos clave, relaciones y atributos nece
 
 ## 4. Diagrama de clases (PlantUML)
 
-![Diagrama de Clases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/jjrp1/pds-2025-final/main/doc/pds-clases.puml)
-
-
+![Diagrama de Clases](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/jjrp1/pds-2025-final/main/doc/pds-clases.puml)
 
 ---
 

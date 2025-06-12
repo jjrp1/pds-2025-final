@@ -1,5 +1,5 @@
 ---  
-title: Apuntes de pds-manual-autores 
+title: Manual para Autores
 subtitle:  
 description:  
 keywords:  
@@ -9,17 +9,14 @@ modified: 2025-06-12
 author: "Juanjo Ruiz"  
 ---  
  
-# Apuntes de pds-manual-autores  
- 
-Aquí tienes un **boceto de manual para autores de cursos** en formato YAML, pensado para que cualquier usuario pueda crear y compartir cursos fácilmente, asegurando que cada tipo de pregunta se describe correctamente según las necesidades de la aplicación y el modelo de dominio[1][2].
-
----
-
-# Manual para autores de cursos en formato YAML
+# Manual para Autores de cursos en formato YAML
 
 ## 1. Introducción
 
-Este manual explica cómo crear cursos para la aplicación de aprendizaje en formato YAML. Los cursos pueden ser de cualquier temática (idiomas, programación, cultura general, etc.) y se editan con cualquier editor de texto.  
+Este manual explica cómo crear cursos para la aplicación de aprendizaje en formato YAML.  
+
+Los cursos pueden ser de cualquier temática (idiomas, programación, cultura general, etc.) y se editan con cualquier editor de texto.  
+
 El formato YAML es legible y flexible, pero es importante respetar la estructura y los campos requeridos para cada tipo de pregunta.
 
 ---
@@ -147,15 +144,61 @@ bloques:
 - Si tu curso requiere imágenes o audios, colócalos en la misma carpeta y referencia el archivo en el campo correspondiente (ejemplo: `anverso: "foto.png"`).
 - Revisa siempre que todos los campos obligatorios estén presentes para evitar errores de carga.
 
+
+
+## Validación
+
+Antes de compartir tu curso, utiliza el validador de cursos (si está disponible) en la aplicación) o revisa que la estructura YAML sea correcta y que todos los campos requeridos estén presentes.
+
+
+## Referencia Rápida
+**Tabla resumen** de campos *obligatorios* y *opcionales* para cada tipo de pregunta.
+
+| Tipo de pregunta       | Campos obligatorios                                                                | Campos opcionales            
+|------------------------|------------------------------------------------------------------------------------|---------------------------------
+| **test**               | `id`, `tipo`, `enunciado`, `opciones`, `respuestaCorrecta`                         | `explicacion`, `imagen`          
+| **completar_huecos**   | `id`, `tipo`, `enunciado`, `respuestaCorrecta`                                     | `explicacion`, `imagen`          
+| **flashcard**          | `id`, `tipo`, `anverso`, `reverso`                                                 | `imagenAnverso`, `imagenReverso` 
+| **traduccion**         | `id`, `tipo`, `enunciado`, `respuestaCorrecta`                                     | `explicacion`, `imagen`          
+| **otro (extensible)**  | `id`, `tipo`, campos definidos por el nuevo tipo (consultar documentación técnica) | Depende del tipo                 
+
 ---
 
-## 5. Ampliación: nuevos tipos de preguntas
+### Ejemplos de cada tipo
 
-Si la aplicación soporta nuevos tipos de preguntas (por ejemplo, preguntas de audio), consulta la documentación técnica para saber qué campos adicionales debes incluir y cómo referenciar los recursos multimedia.
+**Pregunta tipo test**
+```yaml
+- id: p1
+  tipo: "test"
+  enunciado: "¿Cuál es la capital de Francia?"
+  opciones:
+    - "Madrid"
+    - "París"
+    - "Roma"
+  respuestaCorrecta: "París"
+```
 
----
+**Pregunta de completar huecos**
+```yaml
+- id: p2
+  tipo: "completar_huecos"
+  enunciado: "La capital de España es _____."
+  respuestaCorrecta: "Madrid"
+```
 
-## 6. Validación
+**Flashcard**
+```yaml
+- id: p3
+  tipo: "flashcard"
+  anverso: "Hola"
+  reverso: "Hello"
+```
 
-Antes de compartir tu curso, utiliza el validador de cursos (si está disponible en la aplicación) o revisa que la estructura YAML sea correcta y que todos los campos requeridos estén presentes.
+**Pregunta de traducción**
+```yaml
+- id: p4
+  tipo: "traduccion"
+  enunciado: "Traduce: 'Good morning'"
+  respuestaCorrecta: "Buenos días"
+```
 

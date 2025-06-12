@@ -26,7 +26,13 @@ class Sesion {
   +porcentajeCompletitud: int
   +tasaAciertos: int
   +mejorRachaAciertos: int
+  +guardarSesion()
+  +restaurarSesion()
+  +responderPregunta()
+  +actualizarEstadisticas()
+  +finalizarSesion()  
 }
+
 class PreguntaSesion {
   +resultado: String
   +tiempoDedicado: int

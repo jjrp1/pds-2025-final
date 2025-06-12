@@ -40,20 +40,13 @@ Permite que las preguntas incluyan imágenes, audio o vídeo (por ejemplo, para 
 - El usuario puede escuchar o ver contenido asociado a la pregunta.
 - Muy valorado en cursos prácticos.
 
-### **Modo “repaso inteligente”**
-Implementa un algoritmo que detecta las preguntas en las que el usuario falla más y las prioriza automáticamente en futuras sesiones.
 
-## ¿Cuál elegir?
 
-- **Marcar para repaso** y **Modo desafío** son fáciles de implementar y muy valorados por los usuarios.
+## Posible priorización
+
+- **Soporte multimedia** es una opción muy atractiva.
+- **Marcar para repaso** y **Modo desafío** son fáciles de implementar.
 - **Notas personales** y **logros** aportan personalización y motivación.
-- **Soporte multimedia** es muy atractivo si tu dominio lo permite.
-- **Repaso inteligente** es más avanzado, pero demuestra un enfoque pedagógico sofisticado.
 
----
 
-## Ejemplo de redacción para la documentación
 
-> **Característica adicional: Modo desafío**
->
-> El sistema permite al usuario iniciar una sesión de desafío, en la que debe responder el mayor número de preguntas posibles en un tiempo limitado. El resultado se almacena como récord personal y puede consultarse en las estadísticas.

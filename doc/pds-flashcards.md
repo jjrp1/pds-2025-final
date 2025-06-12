@@ -1,5 +1,5 @@
 ---  
-title: Apuntes de pds-flashcards 
+title: Sobre las *flashcards*
 subtitle:  
 description:  
 keywords:  
@@ -9,8 +9,7 @@ modified: 2025-06-11
 author: "Juanjo Ruiz"  
 ---  
  
-# Apuntes de pds-flashcards  
-
+# Sobre las *flashcards*
 
 Las *flashcards* presentan un reto particular porque, por definición, no requieren respuesta explícita del usuario, sino que están pensadas para el autoestudio y la autoevaluación. 
 

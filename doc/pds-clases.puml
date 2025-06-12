@@ -30,7 +30,7 @@ class Sesion {
   +restaurarSesion()
   +responderPregunta()
   +actualizarEstadisticas()
-  +finalizarSesion()  
+  +finalizarSesion()
 }
 
 class PreguntaSesion {

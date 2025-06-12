@@ -11,6 +11,14 @@ author: "Juanjo Ruiz"
  
 # Mejoras
 
+### Herramienta (CLI) para Validación de Cursos
+
+Herramienta de línea de comandos para validar que un curso cumple la estructura debida.
+Esto no exime a la aplicación de validar los cursos al cargarlos, pero facilita a un autor validar su trabajo.
+
+Se puede aprovechar el código de carga de la aplicación principal.
+
+
 ### ***“Marcar para repaso”***
 Permitir al usuario marcar preguntas como *“difíciles*” o “*para repasar más tarde*”.  
 - Se añade una opción en cada pregunta para marcarla.

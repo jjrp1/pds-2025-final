@@ -1,24 +1,24 @@
 id: curso_ingles
-nombre: ""Inglés básico""
-descripcion: ""Curso de iniciación al inglés""
+nombre: "Inglés básico"
+descripcion: "Curso de iniciación al inglés"
 bloques:
   - id: bloque1
-    titulo: ""Vocabulario""
-    tipo: ""test""
+    titulo: "Vocabulario"
+    tipo: "test"
     preguntas:
       - id: p1
-        tipo: ""test""
-        enunciado: ""What is the capital of England?""
+        tipo: "test"
+        enunciado: "What is the capital of England?"
         opciones:
-          - ""London""
-          - ""Paris""
-          - ""Rome""
-        respuestaCorrecta: ""London""
+          - "London"
+          - "Paris"
+          - "Rome"
+        respuestaCorrecta: "London"
   - id: bloque2
-    titulo: ""Frases""
-    tipo: ""fill_gap""
+    titulo: "Frases"
+    tipo: "fill_gap"
     preguntas:
       - id: p2
-        tipo: ""fill_gap""
-        enunciado: ""She ____ to school every day.""
-        respuestaCorrecta: ""goes""
+        tipo: "fill_gap"
+        enunciado: "She ____ to school every day."
+        respuestaCorrecta: "goes"

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import org.kordamp.ikonli.materialdesign2.MaterialDesignP?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pds.controllers.MainController"
+      spacing="10"
+      style="-fx-background-color: white;"
+      prefWidth="600"
+      prefHeight="400">
+    
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- Panel de selección de curso -->
+    <VBox fx:id="courseSelectionPanel" spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Cursos disponibles:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+        <ListView fx:id="courseListView" VBox.vgrow="ALWAYS" prefHeight="600"/>
+        
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="inspectButton" text="Inspeccionar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2m-magnify" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="startButton" text="Comenzar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2p-play" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="resumeButton" text="Reanudar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2r-refresh" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="flashcardsButton" text="Flashcards">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-cards" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="statisticsButton" text="Estadísticas">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-chart-bar" iconSize="16"/>
+                </graphic>
+            </Button>
+        </HBox>
+        
+        <!-- Barra de estado -->
+        <HBox style="-fx-background-color: #f0f0f0; -fx-padding: 5;" alignment="CENTER_LEFT">
+            <Label fx:id="statusLabel" text="Cursos cargados: 0" style="-fx-text-fill: #666666;"/>
+        </HBox>
+    </VBox>
+    
+    <!-- Panel de selección de estrategia -->
+    <VBox fx:id="strategySelectionPanel" spacing="15" visible="false" alignment="TOP_CENTER">
+        <Label text="Selecciona una estrategia de aprendizaje:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+        
+        <HBox spacing="20" alignment="CENTER">
+            <RadioButton fx:id="sequentialStrategy" text="Secuencial" selected="true" toggleGroup="$strategyGroup"/>
+            <RadioButton fx:id="randomStrategy" text="Aleatoria" toggleGroup="$strategyGroup"/>
+            <RadioButton fx:id="spacedStrategy" text="Repetición espaciada" toggleGroup="$strategyGroup"/>
+        </HBox>
+        
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="confirmStrategyButton" text="Confirmar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-check" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="cancelStrategyButton" text="Cancelar">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-close" iconSize="16"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </VBox>
+    
+    <!-- Panel de preguntas -->
+    <VBox fx:id="questionPanel" alignment="TOP_LEFT" spacing="10" styleClass="question-panel" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        
+        <!-- Pregunta actual -->
+        <Label fx:id="questionLabel" wrapText="true" styleClass="question-text"/>
+        
+        <!-- Opciones de respuesta -->
+        <VBox fx:id="optionsContainer" spacing="10" alignment="TOP_LEFT"/>
+        
+        <!-- Botones de navegación -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="verifyButton" text="Verificar" styleClass="verify-button">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2c-check-circle" iconSize="16"/>
+                </graphic>
+            </Button>
+            <Button fx:id="exitButton" text="Salir">
+                <graphic>
+                    <FontIcon iconLiteral="mdi2l-logout" iconSize="16"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </VBox>
+</VBox> 

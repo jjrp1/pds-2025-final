@@ -9,7 +9,146 @@ modified: 2025-06-11
 author: "Juanjo Ruiz"  
 ---  
 
+# Estrategias de Aprendizaje
 
+Este documento describe las diferentes estrategias de aprendizaje implementadas en el sistema, su funcionamiento y cómo se integran con la interfaz de usuario.
+
+## Estrategias Disponibles
+
+### 1. Secuencial
+- Presenta las preguntas en orden secuencial
+- Mantiene un índice de la pregunta actual
+- Ideal para aprendizaje estructurado y progresivo
+
+### 2. Aleatoria
+- Presenta las preguntas en orden aleatorio
+- Mantiene un registro de preguntas ya mostradas
+- Útil para repaso y evitar sesgos de orden
+
+### 3. Repetición Espaciada
+- Utiliza el algoritmo SM-2 para optimizar el tiempo de estudio
+- Ajusta los intervalos según el rendimiento del usuario
+- Ideal para retención a largo plazo
+
+## Integración con la GUI
+
+### Selección de Estrategia
+- Al comenzar un nuevo curso, se muestra un diálogo para seleccionar la estrategia
+- Si se reanuda una sesión, se usa la estrategia guardada
+- La interfaz se limpia completamente al comenzar/reanudar
+
+### Ámbito de Aplicación
+- La estrategia elegida se aplica a nivel de bloque, no de curso completo
+- Cada bloque mantiene su propia secuencia de preguntas según la estrategia
+- Al cambiar de bloque, se reinicia la secuencia manteniendo la misma estrategia
+- Por ejemplo, con estrategia aleatoria:
+  - Las preguntas se "barajan" dentro de cada bloque
+  - No se mezclan preguntas de diferentes bloques
+  - Al pasar al siguiente bloque, se barajan sus preguntas independientemente
+
+## Implementación Técnica
+
+### Interfaz Base
+```java
+public interface EstrategiaAprendizaje extends Serializable {
+    Pregunta siguientePregunta();
+    EstadoIterador guardarEstado();
+    void restaurarEstado(EstadoIterador estado);
+    String getNombre();
+    String getDescripcion();
+}
+```
+
+### Estado del Iterador
+```java
+public class EstadoIterador implements Serializable {
+    private int indiceActual;
+    private List<Integer> ordenPreguntas;
+    private Map<String, Object> datosEstrategia;
+    private String idBloque;  // Identificador del bloque actual
+    
+    // Getters y setters
+}
+```
+
+### Ejemplo de Implementación
+```java
+public class EstrategiaSecuencial implements EstrategiaAprendizaje {
+    private int indiceActual = 0;
+    private List<Pregunta> preguntas;
+    private String idBloque;
+    
+    public EstrategiaSecuencial(List<Pregunta> preguntas, String idBloque) {
+        this.preguntas = preguntas;
+        this.idBloque = idBloque;
+    }
+    
+    @Override
+    public Pregunta siguientePregunta() {
+        if (indiceActual < preguntas.size()) {
+            return preguntas.get(indiceActual++);
+        }
+        return null;
+    }
+    
+    @Override
+    public EstadoIterador guardarEstado() {
+        EstadoIterador estado = new EstadoIterador();
+        estado.setIndiceActual(indiceActual);
+        estado.setIdBloque(idBloque);
+        return estado;
+    }
+    
+    @Override
+    public void restaurarEstado(EstadoIterador estado) {
+        this.indiceActual = estado.getIndiceActual();
+        this.idBloque = estado.getIdBloque();
+    }
+    
+    @Override
+    public String getNombre() {
+        return "Secuencial";
+    }
+    
+    @Override
+    public String getDescripcion() {
+        return "Presenta las preguntas en orden secuencial dentro de cada bloque";
+    }
+}
+```
+
+## Persistencia
+
+### Guardado de Sesión
+- Se serializa el estado completo de la estrategia
+- Se guarda junto con el progreso de la sesión
+- Permite reanudar exactamente donde se dejó
+- Se mantiene el estado de la estrategia por bloque
+
+### Restauración
+- Se deserializa el estado de la estrategia
+- Se reconstruye el iterador con su estado anterior
+- Se restaura el punto exacto de avance
+- Se recupera el estado específico del bloque actual
+
+## Consideraciones de Diseño
+
+1. **Extensibilidad**
+   - Fácil adición de nuevas estrategias
+   - Interfaz clara y bien definida
+   - Serialización flexible
+
+2. **Integración con GUI**
+   - Transiciones suaves entre bloques
+   - Feedback claro al usuario
+   - Persistencia transparente
+
+3. **Rendimiento**
+   - Carga eficiente de estados
+   - Minimización de operaciones I/O
+   - Caché de estados cuando sea posible
+
+---
 
 # Registro de sesión (iterador de estrategia) 
  
